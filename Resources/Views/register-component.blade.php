@@ -1,0 +1,1 @@
+@moduleViteAssets( 'Resources/js/main.js', 'BulkEditor' )

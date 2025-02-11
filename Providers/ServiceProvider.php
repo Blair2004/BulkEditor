@@ -4,7 +4,10 @@
  * @package : BulkEditor
 **/
 namespace Modules\BulkEditor\Providers;
+
+use App\Classes\Hook;
 use Illuminate\Support\ServiceProvider as CoreServiceProvider;
+use Modules\BulkEditor\Services\ConfigurationService;
 
 class ServiceProvider extends CoreServiceProvider
 {
@@ -13,7 +16,9 @@ class ServiceProvider extends CoreServiceProvider
      */
     public function register()
     {
-        // register stuff here
+        $this->app->singleton( ConfigurationService::class, function() {
+            return new ConfigurationService;
+        });
     }
     
     /**
