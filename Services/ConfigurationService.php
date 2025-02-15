@@ -19,6 +19,20 @@ class ConfigurationService
                 $buttons[]  =   'nsBulkEditor';
                 return $buttons;
             });
+
+            $class::filterMethod( 'getCrudConfig', function( $config ) use ( $class ) {
+                $config[ 'bulkEditConfig' ]     =   array_merge( $this->declarations[ $class ], [ 'class' => $class ] );
+
+                // this will hide the default button that shows selected entries
+                $config[ 'showSelectedEntries' ] =  false;
+
+                return $config;
+            });
         }
+    }
+
+    public function getConfiguration( string $class )
+    {
+        return $this->declarations[ $class ] ?? null;
     }
 }
