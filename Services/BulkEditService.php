@@ -21,11 +21,19 @@ class BulkEditService
             return !is_null( $value );
         });
 
-        $model::whereIn( $mapping[ 'value' ], $ids )->update( $data );
+        // We should check if the user is allowed
+        // to update the fields provided
+        $permission     =   $crudInstance->getPermission( 'update' );
 
-        return [
-            'status'    =>  'success',
-            'message'   =>  'Entries updated successfully.'
-        ];
+        // if the user is allowed to update the fields
+        // we'll update the entries
+        if ( ns()->restrict( $permission ) ) {
+            $model::whereIn( $mapping[ 'value' ], $ids )->update( $data );
+    
+            return [
+                'status'    =>  'success',
+                'message'   =>  __m( 'The selected entries have been updated.', 'NsRawMaterial' )
+            ];
+        }
     }
 }
