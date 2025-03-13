@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import laravel from 'laravel-vite-plugin';
 import path from 'node:path';
 import vuePlugin from '@vitejs/plugin-vue';
+import tailwindcss from '@tailwindcss/vite'
 
 const Vue = fileURLToPath(
 	new URL(
@@ -19,6 +20,7 @@ export default ({ mode }) => {
         base: '/modules/bulkeditor/build/',
         plugins: [
             vuePlugin(),
+            tailwindcss(),
             laravel({
                 input: [
                     'Resources/js/main.js',

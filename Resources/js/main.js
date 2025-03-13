@@ -2,14 +2,14 @@ document.addEventListener( 'DOMContentLoaded', function() {
     const nsBulkEditorPopup = defineComponent({
         props: [ 'config', 'selected', 'popup', 'state' ],
         template: `
-        <div class="ns-box shadow-lg w-95vw">
+        <div class="ns-box shadow-lg w-3/5-screen">
             <div class="ns-box-title border-b border-box-edge flex items-center p-2 justify-between">
                 <h3>{{ __m( 'Bulk Editing: {items} selected', 'BulkEditor' ).replace( '{items}', entries.length ) }}</h3>
                 <div>
                     <ns-close-button @click="closePopup()"/>
                 </div>
             </div>
-            <div class="ns-box-body flex h-6/7-screen">
+            <div class="ns-box-body flex h-[80vh]">
                 <div class="aside hidden md:w-2/5 lg:w-2/5 border-r border-box-edge md:flex flex-col flex-auto overflow-hidden">
                     <div class="flex-auto overflow-y-auto p-2">
                         <div v-for="item of entries" class="mb-2 rounded-full p-1 flex items-center justify-between bg-box-elevation-background">
@@ -23,7 +23,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
                         </div>
                     </div>
                     <div class="border-t border-box-edge p-2">
-                        <button @click="clearAllSelection()" class="rounded-full w-full p-2 text-white bg-error-tertiary">{{ __m( 'Clear All' ) }}</button>
+                        <button @click="clearAllSelection()" class="rounded-full w-full p-2 text-white bg-error-secondary">{{ __m( 'Clear All' ) }}</button>
                     </div>
                 </div>
                 <div class="flex flex-col h-full flex-auto overflow-hidden">
@@ -88,6 +88,19 @@ document.addEventListener( 'DOMContentLoaded', function() {
                     return nsNotice.error(
                         __m( 'Validation Error', 'BulkEditor' ),
                         __m( 'Please fill all the required fields', 'BulkEditor' )
+                    );
+                }
+
+                /**
+                 * Before bulk updating, we need to check if any field has at least a value.
+                 * If it's not the case, we shouldn't proceed as no changes will be made.
+                 */
+                const hasChanges = Object.values( this.fields ).some( field => field.value !== '' );
+
+                if ( ! hasChanges ) {
+                    return nsNotice.error(
+                        __m( 'No Changes', 'BulkEditor' ),
+                        __m( 'Please make some changes before updating', 'BulkEditor' )
                     );
                 }
 
