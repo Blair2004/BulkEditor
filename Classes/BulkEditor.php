@@ -1,8 +1,16 @@
 <?php
 namespace Modules\BulkEditor\Classes;
 
-class BulkEdit
+use Attribute;
+
+#[Attribute( Attribute::TARGET_CLASS )]
+class BulkEditor
 {
+    public function __construct( public array $config )
+    {
+        // ...
+    }
+
     public static function configuration( array $fields, array $mapping )
     {
         return compact( 'fields', 'mapping' );
