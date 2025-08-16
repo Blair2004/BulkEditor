@@ -4,6 +4,18 @@
     <version>6.0.0</version>
     <author>Nexo Solutions LLC</author>
     <name>Bulk Editor</name>
-    <description>This module helps updating entries in very few clicks.</description>
+    <description>
+        <locale lang="en">This module helps updating entries in very few clicks.</locale>
+        <locale lang="de">Dieses Modul hilft, Einträge mit nur wenigen Klicks zu aktualisieren.</locale>
+        <locale lang="fr">Ce module aide à mettre à jour les entrées en très peu de clics.</locale>
+        <locale lang="es">Este módulo ayuda a actualizar entradas en muy pocos clics.</locale>
+        <locale lang="it">Questo modulo aiuta ad aggiornare le voci con pochissimi clic.</locale>
+        <locale lang="ar">يساعد هذا المكون على تحديث الإدخالات ببضع نقرات فقط.</locale>
+        <locale lang="pt">Este módulo ajuda a atualizar entradas com muito poucos cliques.</locale>
+        <locale lang="tr">Bu modül, girişleri çok az tıklamayla güncellemeye yardımcı olur.</locale>
+        <locale lang="km">ម៉ូឌុលនេះជួយក្នុងការធ្វើបច្ចុប្បន្នភាពធាតុបញ្ចូលក្នុងចំនួនចុចតិចតួចប៉ុណ្ណោះ។</locale>
+        <locale lang="vi">Mô-đun này giúp cập nhật các mục chỉ với rất ít lần nhấp.</locale>
+        <locale lang="sq">Ky modul ndihmon për të përditësuar hyrjet me shumë pak klikime.</locale>
+    </description>
     <core min-version="6.0.0" max-version="6.99"/>
 </module>

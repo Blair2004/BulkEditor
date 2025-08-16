@@ -1,4 +1,5 @@
 document.addEventListener( 'DOMContentLoaded', function() {
+    console.log( 'zfoo' );
     const nsBulkEditorPopup = defineComponent({
         props: [ 'config', 'selected', 'popup', 'state' ],
         template: `

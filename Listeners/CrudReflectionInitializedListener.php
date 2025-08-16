@@ -2,7 +2,7 @@
 namespace Modules\BulkEditor\Listeners;
 
 use App\Events\CrudReflectionInitialized;
-use Modules\BulkEditor\Classes\BulkEdit;
+use Modules\BulkEditor\Classes\BulkEditor;
 use Modules\BulkEditor\Services\ConfigurationService;
 
 class CrudReflectionInitializedListener

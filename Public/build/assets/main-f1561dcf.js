@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded",function(){const l=defineComponent({props:["config","selected","popup","state"],template:`
+document.addEventListener("DOMContentLoaded",function(){console.log("zfoo");const l=defineComponent({props:["config","selected","popup","state"],template:`
         <div class="ns-box shadow-lg w-3/5-screen">
             <div class="ns-box-title border-b border-box-edge flex items-center p-2 justify-between">
                 <h3>{{ __m( 'Bulk Editing: {items} selected', 'BulkEditor' ).replace( '{items}', entries.length ) }}</h3>
