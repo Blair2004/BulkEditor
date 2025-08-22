@@ -1,6 +1,8 @@
 <?php
 namespace Modules\BulkEditor\Services;
 
+use App\Exceptions\NotAllowedException;
+
 class BulkEditService
 {
     public function __construct( public ConfigurationService $configurationService )
@@ -27,7 +29,7 @@ class BulkEditService
 
         // if the user is allowed to update the fields
         // we'll update the entries
-        if ( ns()->restrict( $permission ) ) {
+        if ( ns()->allowedTo( $permission ) ) {
             $model::whereIn( $mapping[ 'value' ], $ids )->update( $data );
     
             return [
@@ -35,5 +37,10 @@ class BulkEditService
                 'message'   =>  __m( 'The selected entries have been updated.', 'NsRawMaterial' )
             ];
         }
+
+        throw new NotAllowedException( sprintf(
+            __m( 'You are not allowed to update these items: %s', 'NsRawMaterial' ),
+            $permission
+        ) );
     }
 }

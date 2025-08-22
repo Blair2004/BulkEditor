@@ -6,9 +6,13 @@
 namespace Modules\BulkEditor\Providers;
 
 use App\Classes\Hook;
+use App\Services\ModulesService;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider as CoreServiceProvider;
 use Modules\BulkEditor\Services\BulkEditService;
 use Modules\BulkEditor\Services\ConfigurationService;
+use Modules\NsMultiStore\Events\MultiStoreApiRoutesLoadedEvent;
+use Modules\NsMultiStore\Events\MultiStoreWebRoutesLoadedEvent;
 
 class ServiceProvider extends CoreServiceProvider
 {
@@ -26,6 +30,8 @@ class ServiceProvider extends CoreServiceProvider
                 $this->app->make( ConfigurationService::class )
             );
         });
+
+        Event::listen(MultiStoreApiRoutesLoadedEvent::class, fn () => ModulesService::loadModuleFile('BulkEditor', 'Routes/api'));
     }
     
     /**
