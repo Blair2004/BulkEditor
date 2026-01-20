@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <module>
     <namespace>BulkEditor</namespace>
-    <version>6.0.2</version>
+    <version>6.0.3</version>
     <author>Nexo Solutions LLC</author>
     <name>Bulk Editor</name>
     <description>

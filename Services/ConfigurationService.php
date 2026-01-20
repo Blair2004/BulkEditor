@@ -10,6 +10,10 @@ class ConfigurationService
 
     public function register( string $class, array $configuration )
     {
+        // Out of the box we need to allow modules to 
+        // extends current configuration
+        $configuration = Hook::filter( "bulkeditor.configuration.{$class}", $configuration );
+
         $this->declarations[$class] = $configuration;
 
         // yet here, we'll register a filter that will mutate the header
